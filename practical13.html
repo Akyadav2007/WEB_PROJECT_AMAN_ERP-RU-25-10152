@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Functions & Scope</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .output {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: white;
+            border: 1px solid #333;
+            border-radius: 5px;
+        }
+        button {
+            padding: 5px 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript Functions & Variable Scopes</h1>
+
+<h2>User-Defined Function Example</h2>
+<input type="number" id="numInput" placeholder="Enter a number">
+<button onclick="showSquare()">Calculate Square</button>
+<div class="output" id="funcOutput"></div>
+
+<h2>Variable Scope Demonstration</h2>
+<button onclick="scopeDemo()">Check Scope</button>
+<div class="output" id="scopeOutput"></div>
+
+<script>
+    // ===== User-Defined Function =====
+    function calculateSquare(num) {
+        return num * num;
+    }
+
+    function showSquare() {
+        var input = parseFloat(document.getElementById("numInput").value);
+        if(isNaN(input)) {
+            document.getElementById("funcOutput").innerHTML = "Please enter a valid number!";
+            return;
+        }
+        var result = calculateSquare(input); // Invoking the function
+        document.getElementById("funcOutput").innerHTML = "Square of " + input + " is " + result;
+    }
+
+    // ===== Variable Scope Demonstration =====
+    function scopeDemo() {
+        var x = 10;   // Function scoped
+        let y = 20;   // Block scoped
+        const z = 30; // Constant, block scoped
+
+        var output = "Initial values: var x=" + x + ", let y=" + y + ", const z=" + z + "<br>";
+
+        if(true) {
+            var x = 50;  // Same function scope
+            let y = 60;  // New block scoped variable
+            const z = 70; // New block scoped constant
+            output += "Inside if block: var x=" + x + ", let y=" + y + ", const z=" + z + "<br>";
+        }
+
+        output += "After if block: var x=" + x + ", let y=" + y + ", const z=" + z;
+        document.getElementById("scopeOutput").innerHTML = output;
+    }
+</script>
+
+</body>
+</html>

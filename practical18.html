@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Create/Modify Elements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: lightblue;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button {
+            padding: 5px 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>DOM Element Manipulation</h1>
+
+<ul id="itemList">
+    <li>Item 1</li>
+    <li>Item 2</li>
+</ul>
+
+<input type="text" id="newItem" placeholder="Enter new item">
+<br>
+<button onclick="addItem()">Add Item</button>
+<button onclick="removeLastItem()">Remove Last Item</button>
+<button onclick="modifyFirstItem()">Modify First Item</button>
+
+<script>
+    var list = document.getElementById("itemList");
+
+    function addItem() {
+        var input = document.getElementById("newItem").value.trim();
+        if(input === "") return;
+        var li = document.createElement("li");
+        li.textContent = input;
+        list.appendChild(li);
+        document.getElementById("newItem").value = "";
+    }
+
+    function removeLastItem() {
+        if(list.lastElementChild) {
+            list.removeChild(list.lastElementChild);
+        }
+    }
+
+    function modifyFirstItem() {
+        if(list.firstElementChild) {
+            list.firstElementChild.textContent = "Modified Item";
+        }
+    }
+</script>
+
+</body>
+</html>

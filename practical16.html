@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show/Hide and Toggle Classes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+        .box {
+            width: 200px;
+            height: 100px;
+            margin: 20px auto;
+            background-color: lightblue;
+            line-height: 100px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        .hidden {
+            display: none;
+        }
+        .highlight {
+            background-color: orange;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Show/Hide and Toggle Class Demo</h1>
+
+<div class="box" id="myBox">Hello World</div>
+
+<button onclick="toggleVisibility()">Show/Hide Box</button>
+<button onclick="toggleHighlight()">Toggle Highlight</button>
+
+<script>
+    function toggleVisibility() {
+        var box = document.getElementById("myBox");
+        if(box.classList.contains("hidden")) {
+            box.classList.remove("hidden");
+        } else {
+            box.classList.add("hidden");
+        }
+    }
+
+    function toggleHighlight() {
+        var box = document.getElementById("myBox");
+        box.classList.toggle("highlight");
+    }
+</script>
+
+</body>
+</html>
+

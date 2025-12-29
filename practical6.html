@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All CSS Types in One File</title>
+
+    <!-- ===== External CSS (Normally in style.css file) ===== -->
+    <style>
+        /* External CSS */
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .external {
+            color: blue;
+            font-size: 20px;
+        }
+    </style>
+
+    <!-- ===== Internal CSS ===== -->
+    <style>
+        .internal {
+            color: green;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Types Demonstration</h1>
+
+<!-- Inline CSS -->
+<p style="color: red; font-size: 18px;">
+    This text uses Inline CSS
+</p>
+
+<!-- Internal CSS -->
+<p class="internal">
+    This text uses Internal CSS
+</p>
+
+<!-- External CSS -->
+<p class="external">
+    This text uses External CSS
+</p>
+
+</body>
+</html>

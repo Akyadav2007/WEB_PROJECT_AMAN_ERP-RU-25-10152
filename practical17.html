@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Listeners Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+        .box {
+            width: 200px;
+            height: 100px;
+            margin: 20px auto;
+            background-color: lightblue;
+            line-height: 100px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .highlight {
+            background-color: orange;
+            transform: scale(1.2);
+        }
+        input {
+            padding: 5px;
+            margin: 10px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Event Listeners Demo</h1>
+
+<div class="box" id="box">Hover or Click Me</div>
+
+<button id="addMouseListener">Add Mouse Listener</button>
+<button id="removeMouseListener">Remove Mouse Listener</button>
+
+<br>
+
+<input type="text" id="inputField" placeholder="Type something...">
+
+<div id="keyboardOutput"></div>
+
+<script>
+    var box = document.getElementById("box");
+    var addBtn = document.getElementById("addMouseListener");
+    var removeBtn = document.getElementById("removeMouseListener");
+    var input = document.getElementById("inputField");
+    var keyboardOutput = document.getElementById("keyboardOutput");
+
+    function mouseEnter() {
+        box.classList.add("highlight");
+        box.innerHTML = "Mouse Over!";
+    }
+
+    function mouseLeave() {
+        box.classList.remove("highlight");
+        box.innerHTML = "Hover or Click Me";
+    }
+
+    function handleKeyPress(event) {
+        keyboardOutput.innerHTML = "You pressed: " + event.key;
+    }
+
+    addBtn.addEventListener("click", function() {
+        box.addEventListener("mouseenter", mouseEnter);
+        box.addEventListener("mouseleave", mouseLeave);
+    });
+
+    removeBtn.addEventListener("click", function() {
+        box.removeEventListener("mouseenter", mouseEnter);
+        box.removeEventListener("mouseleave", mouseLeave);
+        box.classList.remove("highlight");
+        box.innerHTML = "Hover or Click Me";
+    });
+
+    input.addEventListener("keydown", handleKeyPress);
+</script>
+
+</body>
+</html>

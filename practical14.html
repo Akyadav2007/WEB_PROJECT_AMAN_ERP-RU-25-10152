@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation using JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+        form {
+            width: 300px;
+            margin: auto;
+            padding: 15px;
+            background-color: white;
+            border: 1px solid #333;
+            border-radius: 10px;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 95%;
+            padding: 5px;
+            margin: 10px 0;
+        }
+        input[type="submit"] {
+            padding: 5px 15px;
+            margin-top: 10px;
+        }
+        .output {
+            margin-top: 10px;
+            color: red;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<h1 style="text-align:center;">JavaScript Form Validation</h1>
+
+<form id="myForm" onsubmit="return validateForm()">
+
+    Name: <input type="text" id="name" oninput="checkName()"><br>
+    <div class="output" id="nameMsg"></div>
+
+    Email: <input type="email" id="email" oninput="checkEmail()"><br>
+    <div class="output" id="emailMsg"></div>
+
+    Password: <input type="password" id="password" oninput="checkPassword()"><br>
+    <div class="output" id="passMsg"></div>
+
+    <input type="submit" value="Submit">
+
+</form>
+
+<script>
+    // ===== Onsubmit Validation =====
+    function validateForm() {
+        var name = document.getElementById("name").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var password = document.getElementById("password").value.trim();
+
+        if(name === "") {
+            alert("Name cannot be empty!");
+            return false;
+        }
+        if(email === "") {
+            alert("Email cannot be empty!");
+            return false;
+        }
+        if(password === "") {
+            alert("Password cannot be empty!");
+            return false;
+        }
+        if(password.length < 6) {
+            alert("Password must be at least 6 characters!");
+            return false;
+        }
+
+        alert("Form submitted successfully!");
+        return true;
+    }
+
+    // ===== Oninput Live Feedback =====
+    function checkName() {
+        var name = document.getElementById("name").value;
+        if(name.length < 3) {
+            document.getElementById("nameMsg").innerText = "Name must be at least 3 characters.";
+        } else {
+            document.getElementById("nameMsg").innerText = "";
+        }
+    }
+
+    function checkEmail() {
+        var email = document.getElementById("email").value;
+        if(email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+            document.getElementById("emailMsg").innerText = "Enter a valid email.";
+        } else {
+            document.getElementById("emailMsg").innerText = "";
+        }
+    }
+
+    function checkPassword() {
+        var password = document.getElementById("password").value;
+        if(password.length < 6) {
+            document.getElementById("passMsg").innerText = "Password must be at least 6 characters.";
+        } else {
+            document.getElementById("passMsg").innerText = "";
+        }
+    }
+</script>
+
+</body>
+</html>
